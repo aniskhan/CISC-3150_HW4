@@ -44,7 +44,7 @@ Fun fact! This was a real interview question.*/
 public class Main {
    
 	public static void main(String[] args) {
-		char[][] my2DArray = {{'a', 'b'},{'c', 'd'},{'e', 'f'}};
+		char[][] my2DArray = {{'a','b','h'},{'c','d','i'},{'e','f','g'}};
 		int arrayCount = my2DArray.length;
 		int maxArrayLength =0;
 		for (int i = 0; i <= arrayCount-1; i++) {
@@ -56,15 +56,12 @@ public class Main {
 		//System.out.println("Max Array Length: "+ maxArrayLength);
 		
 		for (int i = 0; i <= arrayCount-1; i++) {
-			for (int j = 0; j <= maxArrayLength; j++) {
-				if (maxArrayLength > my2DArray[i].length) {
-					System.out.print("");//do nothing
-				} else {
-					System.out.print(my2DArray[i][j]);
-				}
+			for (int j = 0; j <= my2DArray[i].length -1; j++) {
+				System.out.print(my2DArray[j][i]);
 			}
-		}
-		
+			System.out.println("");
+		}		
+
 	}
 
 }
