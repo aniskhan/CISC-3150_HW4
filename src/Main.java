@@ -44,7 +44,7 @@ Fun fact! This was a real interview question.*/
 public class Main {
    
 	public static void main(String[] args) {
-		char[][] my2DArray = {{'a','b','h'},{'c','d','i'},{'e','f','g'}};
+		char[][] my2DArray = {{'a','b','h'},{'c','d'},{'e','f','g'}};
 		int arrayCount = my2DArray.length;
 		int maxArrayLength =0;
 		for (int i = 0; i <= arrayCount-1; i++) {
@@ -55,9 +55,11 @@ public class Main {
 		//System.out.println("Count of Arrays: "+ arrayCount);
 		//System.out.println("Max Array Length: "+ maxArrayLength);
 		
-		for (int i = 0; i <= arrayCount-1; i++) {
-			for (int j = 0; j <= my2DArray[i].length -1; j++) {
-				System.out.print(my2DArray[j][i]);
+		for (int r = 0; r <= arrayCount-1; r++) {
+			for (int k = 0; k <= maxArrayLength-1; k++) {
+				if (k <= my2DArray[k].length) { //need to store and check len
+					System.out.print(my2DArray[k][r]);
+				}
 			}
 			System.out.println("");
 		}		
@@ -66,20 +68,4 @@ public class Main {
 
 }
 
-/*// TODO: sort arrays by length, to ensure longest array is "first" combination
-// component
-
-okay, I see the issue here: sorting on the value of a key-value pair in Java is 
-difficult. My first thought was to make a <k><v> <my2DArray.index><array.length>
-
-from there I thought I could just sort by the array length, to get the order of 
-arrays for my for loop
-
-but what if I make my key an array? where the first value is the arry len,
-		second my2DArray.index? Can I sort it then?
-and the value <my2DArray.index>
-
-AHH... TREEMAP .. looks like i can sort by key there ... but doesn't support an
-array sort
-
-*/
+/// YOU NEED TO BUILD A TREE AND WALK IT...
