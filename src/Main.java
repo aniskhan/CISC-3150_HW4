@@ -44,7 +44,7 @@ Fun fact! This was a real interview question.*/
 public class Main {
    
 	public static void main(String[] args) {
-		char[][] my2DArray = {{'a', 'b'},{'c', 'd', 'g','h'},{'e', 'f'}};
+		char[][] my2DArray = {{'a', 'b'},{'c', 'd'},{'e', 'f'}};
 		int arrayCount = my2DArray.length;
 		int maxArrayLength =0;
 		for (int i = 0; i <= arrayCount-1; i++) {
@@ -52,8 +52,19 @@ public class Main {
 				maxArrayLength = my2DArray[i].length;
 			}
 		}
-		System.out.println("Count of Arrays: "+ arrayCount);
-		System.out.println("Max Array Length: "+ maxArrayLength);
+		//System.out.println("Count of Arrays: "+ arrayCount);
+		//System.out.println("Max Array Length: "+ maxArrayLength);
+		
+		for (int i = 0; i <= arrayCount-1; i++) {
+			for (int j = 0; j <= maxArrayLength; j++) {
+				if (maxArrayLength > my2DArray[i].length) {
+					System.out.print("");//do nothing
+				} else {
+					System.out.print(my2DArray[i][j]);
+				}
+			}
+		}
+		
 	}
 
 }
@@ -71,6 +82,7 @@ but what if I make my key an array? where the first value is the arry len,
 		second my2DArray.index? Can I sort it then?
 and the value <my2DArray.index>
 
-AHH... TREEMAP .. looks like i can sort by key there
+AHH... TREEMAP .. looks like i can sort by key there ... but doesn't support an
+array sort
 
 */
