@@ -57,15 +57,18 @@ public class Main {
 	public static void main(String[] args) {
 		char[][] my2DArray = {{'a', 'b'},{'c', 'd', 'g'},{'e', 'f'}};
 		int arrayCount = my2DArray.length;
-		Map<Integer, Integer> UnsortedMapArrayLengths = new HashMap<>();
+		Map<int[], Integer> UnsortedMapArrayLengths = new HashMap<>();
 
 		for (int i = 0; i <= arrayCount-1; i++) {
-			UnsortedMapArrayLengths.put(i, my2DArray[i].length);
+			int[] myArrayDict = new int[2];
+			myArrayDict[0]= my2DArray[i].length;
+			myArrayDict[1]= i;
+			UnsortedMapArrayLengths.put(myArrayDict, i);
 		}
 		printMap(UnsortedMapArrayLengths);
 		
-		Map<Integer, Integer> SortedMapArrayLengths =
-				new TreeMap<Integer, Integer>(UnsortedMapArrayLengths);
+		Map<int[], Integer> SortedMapArrayLengths =
+				new TreeMap<int[], Integer>(UnsortedMapArrayLengths);
 		printMap(SortedMapArrayLengths);
 		
 	}
