@@ -46,21 +46,23 @@ Fun fact! This was a real interview question.*/
 
 
 public class Main {
-
+    //prettyPrint Map | https://www.mkyong.com/java/how-to-sort-a-map-in-java/
+    public static <K, V> void printMap(Map<K, V> map) {
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            System.out.println("Key : " + entry.getKey()
+				+ " Value : " + entry.getValue());
+        }
+    }
+    
 	public static void main(String[] args) {
 		char[][] my2DArray = {{'a', 'b'},{'c', 'd'},{'e', 'f', 'g'}};
 		int arrayCount = my2DArray.length;
 		Map<Integer, Integer> UnsortedMapArrayLengths = new HashMap<>();
-		int maxArrayLength = 0;
+
 		for (int i = 0; i <= arrayCount-1; i++) {
 			UnsortedMapArrayLengths.put(i, my2DArray[i].length);
-			if (my2DArray[i].length > maxArrayLength) {
-				maxArrayLength = my2DArray[i].length;
-			}
 		}
-		//System.out.println("Count of Arrays: "+ arrayCount);
-		//System.out.println("Max Array Length: "+ maxArrayLength);
-		System.out.println(UnsortedMapArrayLengths.get(2));
+		printMap(UnsortedMapArrayLengths);
 		
 		
 	}
