@@ -1,7 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.Deque;
 
 /*
 Write a program that given a two dimensional array of characters prints 
@@ -47,24 +46,28 @@ Fun fact! This was a real interview question.*/
 
 
 public class Main {
-  
+    //prettyPrint Map | https://www.mkyong.com/java/how-to-sort-a-map-in-java/
+    public static <K, V> void printMap(Map<K, V> map) {
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            System.out.println("Key : " + entry.getKey()
+				+ " Value : " + entry.getValue());
+        }
+    }
+    
 	public static void main(String[] args) {
 		char[][] my2DArray = {{'a', 'b'},{'c', 'd', 'g'},{'e', 'f'}};
 		int arrayCount = my2DArray.length;
-		int [][] arrayLengthsDict = new int[my2DArray.length][2];
-		int maxArrayLength = 0;
-		//Map<Integer, Integer> UnsortedMapArrayLengths = new HashMap<>();
+		Map<Integer, Integer> UnsortedMapArrayLengths = new HashMap<>();
 
 		for (int i = 0; i <= arrayCount-1; i++) {
-			arrayLengthsDict[i][0] = i;
-			arrayLengthsDict[i][1] = my2DArray[i].length;
-			if(my2DArray[i].length > maxArrayLength) {
-				maxArrayLength = my2DArray[i].length;
-			}
+			UnsortedMapArrayLengths.put(i, my2DArray[i].length);
 		}
-		//UnsortedMapArrayLengths.put(i, my2DArray[i].length);
-		System.out.println(arrayLengthsDict[2][0]);
-	
+		printMap(UnsortedMapArrayLengths);
+		
+		Map<Integer, Integer> SortedMapArrayLengths =
+				new TreeMap<Integer, Integer>(UnsortedMapArrayLengths);
+		printMap(SortedMapArrayLengths);
+		
 	}
 
 }
@@ -82,10 +85,6 @@ but what if I make my key an array? where the first value is the arry len,
 		second my2DArray.index? Can I sort it then?
 and the value <my2DArray.index>
 
-AHH... TREEMAP .. looks like i can sort by key there, but not value... hummm
-
-
-What is I use a deque? All that matters is that my longest array is first, and
-all arrays are listed, right?
+AHH... TREEMAP .. looks like i can sort by key there
 
 */
