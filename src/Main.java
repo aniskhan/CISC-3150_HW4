@@ -44,13 +44,16 @@ Fun fact! This was a real interview question.*/
 public class Main {
 
 	public static void main(String[] args) {
-		char[][] my2DArray = {{'a', 'b'},{'c', 'd'},{'e', 'f'}};
+		char[][] my2DArray = {{'a', 'b'},{'c', 'd'},{'e', 'f', 'g'}};
 		int arrayCount = my2DArray.length;
-		
+		int maxArrayLength = 0;
 		for (int i = 0; i <= arrayCount-1; i++) {
-			System.out.print(my2DArray[i].length);
+			if (my2DArray[i].length > maxArrayLength) {
+				maxArrayLength = my2DArray[i].length;
+			}
 		}
-		System.out.print(my2DArray.length);
+		System.out.println("Count of Arrays: "+ arrayCount);
+		System.out.println("Max Array Length: "+ maxArrayLength);
 	}
 
 }
