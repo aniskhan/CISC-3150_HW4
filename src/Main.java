@@ -1,7 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
-
 /*
 Write a program that given a two dimensional array of characters prints 
 out the combination of every letter with every other letter. For eg, if 
@@ -46,31 +42,18 @@ Fun fact! This was a real interview question.*/
 
 
 public class Main {
-    //prettyPrint Map | https://www.mkyong.com/java/how-to-sort-a-map-in-java/
-    public static <K, V> void printMap(Map<K, V> map) {
-        for (Map.Entry<K, V> entry : map.entrySet()) {
-            System.out.println("Key : " + entry.getKey()
-				+ " Value : " + entry.getValue());
-        }
-    }
-    
+   
 	public static void main(String[] args) {
-		char[][] my2DArray = {{'a', 'b'},{'c', 'd', 'g'},{'e', 'f'}};
+		char[][] my2DArray = {{'a', 'b'},{'c', 'd', 'g','h'},{'e', 'f'}};
 		int arrayCount = my2DArray.length;
-		Map<int[], Integer> UnsortedMapArrayLengths = new HashMap<>();
-
+		int maxArrayLength =0;
 		for (int i = 0; i <= arrayCount-1; i++) {
-			int[] myArrayDict = new int[2];
-			myArrayDict[0]= my2DArray[i].length;
-			myArrayDict[1]= i;
-			UnsortedMapArrayLengths.put(myArrayDict, i);
+			if (my2DArray[i].length > maxArrayLength) {
+				maxArrayLength = my2DArray[i].length;
+			}
 		}
-		printMap(UnsortedMapArrayLengths);
-		
-		Map<int[], Integer> SortedMapArrayLengths =
-				new TreeMap<int[], Integer>(UnsortedMapArrayLengths);
-		printMap(SortedMapArrayLengths);
-		
+		System.out.println("Count of Arrays: "+ arrayCount);
+		System.out.println("Max Array Length: "+ maxArrayLength);
 	}
 
 }
