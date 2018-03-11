@@ -55,7 +55,7 @@ public class Main {
     }
     
 	public static void main(String[] args) {
-		char[][] my2DArray = {{'a', 'b'},{'c', 'd'},{'e', 'f', 'g'}};
+		char[][] my2DArray = {{'a', 'b'},{'c', 'd', 'g'},{'e', 'f'}};
 		int arrayCount = my2DArray.length;
 		Map<Integer, Integer> UnsortedMapArrayLengths = new HashMap<>();
 
@@ -64,6 +64,9 @@ public class Main {
 		}
 		printMap(UnsortedMapArrayLengths);
 		
+		Map<Integer, Integer> SortedMapArrayLengths =
+				new TreeMap<Integer, Integer>(UnsortedMapArrayLengths);
+		printMap(SortedMapArrayLengths);
 		
 	}
 
@@ -72,7 +75,7 @@ public class Main {
 /*// TODO: sort arrays by length, to ensure longest array is "first" combination
 // component
 
-//okay, I see the issue here: sorting on the value of a key-value pair in Java is 
+okay, I see the issue here: sorting on the value of a key-value pair in Java is 
 difficult. My first thought was to make a <k><v> <my2DArray.index><array.length>
 
 from there I thought I could just sort by the array length, to get the order of 
@@ -82,6 +85,6 @@ but what if I make my key an array? where the first value is the arry len,
 		second my2DArray.index? Can I sort it then?
 and the value <my2DArray.index>
 
-AHH... TREEMAP
+AHH... TREEMAP .. looks like i can sort by key there
 
 */
