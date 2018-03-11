@@ -44,12 +44,13 @@ Fun fact! This was a real interview question.*/
 public class Main {
 
 	public static void main(String[] args) {
-		char[][] myArray = {{'a', 'b'},{'c', 'd'},{'e', 'f'}};
+		char[][] my2DArray = {{'a', 'b'},{'c', 'd'},{'e', 'f'}};
+		int arrayCount = my2DArray.length;
 		
-		for (int i = 0; i <=2; i++) {
-			System.out.print(myArray[i][0]);
+		for (int i = 0; i <= arrayCount-1; i++) {
+			System.out.print(my2DArray[i].length);
 		}
-
+		System.out.print(my2DArray.length);
 	}
 
 }
