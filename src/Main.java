@@ -44,7 +44,11 @@ Fun fact! This was a real interview question.*/
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		char[][] myArray = {{'a', 'b'},{'c', 'd'},{'e', 'f'}};
+		
+		for (int i = 0; i <=2; i++) {
+			System.out.print(myArray[i][0]);
+		}
 
 	}
 
