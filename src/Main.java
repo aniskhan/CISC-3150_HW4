@@ -92,8 +92,8 @@ public class Main {
 			while (counter <= ctPossCombos/subArrayLengths[r]) {
 				for(int k = 0; k <= subArrayLengths[r]-1; k++ ) {
 					combHolder[r][counter-1] = my2DArray[r][k];
-					//System.out.print(my2DArray[r][k]);
-					//System.out.print(combHolder[r][counter-1]);
+					System.out.print(my2DArray[r][k]);
+					System.out.print(combHolder[r][counter-1]);
 					if (k == subArrayLengths[r]-1) {
 						counter++;
 					}
@@ -113,17 +113,6 @@ public class Main {
 	}
 }		
 
-
-/*		String[] a = {"2","a","b","h"};
-int n=a.length-1,k=Integer.parseInt(a[0].toString()),i=0,j;
-while(++i<1<<n)
-    if(Integer.bitCount(i)==k){
-        String s="";
-        for(j=0;j<n;)
-            if((i&1<<j++)!=0)
-                s+=a[j];
-        System.out.println(s);
-    }*/
 
 
 
