@@ -89,20 +89,21 @@ public class Main {
 		int counter = 1;
 		String combHolder[][]= new String [arrayCount][ctPossCombos];
 		for (int r = 0; r <= arrayCount-1; r++) {
+			String s = "";
 			while (counter <= ctPossCombos/subArrayLengths[r]) {
 				for(int k = 0; k <= subArrayLengths[r]-1; k++ ) {
-					combHolder[r][counter-1] = my2DArray[r][k];
-					System.out.print(my2DArray[r][k]);
-					System.out.print(combHolder[r][counter-1]);
+					s = s + my2DArray[r][k];
+					//System.out.print(my2DArray[r][k]);
+					//System.out.print(combHolder[r][counter-1]);
 					if (k == subArrayLengths[r]-1) {
 						counter++;
 					}
 				}
 			}
 			counter=1;
-			System.out.println(Arrays.toString(combHolder[r]));
+			combHolder[r] = s.split("(?!^)");
+			//System.out.println(s);
 		}
-		System.out.println();
 		//pretty print
 		for(int k = 0; k <= ctPossCombos-1; k++) {
 			for(int r = 0; r <= arrayCount-1; r++) {
