@@ -49,7 +49,26 @@ Fun fact! This was a real interview question.*/
 NOTES
 
 If I know the total number of combinations possible, I also know the number of
-times each char(typed as String) will appear, once all combinations are printed
+times each char(typed as String) will appear in the full set of combinations
+
+Example {{"a"},{"b","c"},{"d"},{"e","f","g"}};
+
+has 2 array with len 1
+has 1 array with len 2
+has 1 array with len 3
+
+Total combinations = 1^2 * 2^1 * 3^1 = 6
+
+In full combo set I will see "a"/"d" (each) 6x, "b"/"c" 3x, "e"/"f"/"g" 2x
+
+aaaaaa
+bcbcbc
+dddddd
+efgefg
+
+This can now be manipulated to print to spec.
+
+
 */
 
 public class Main {
