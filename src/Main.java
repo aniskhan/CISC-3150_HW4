@@ -86,6 +86,15 @@ public class Main {
 		}
 		
 		System.out.println(ctPossCombos.toString());
+	
+		for (int i = 0; i <= arrayCount-1; i++) {
+			for(int k = 0; k <= my2DArray[i].length; k++) {
+				for(int r = 1; r <= (ctPossCombos/my2DArray[i].length); r++) {
+					System.out.print(my2DArray[i][k]);	
+				}
+			}
+			subArrayLengths[i] = (my2DArray[i].length);
+		}
 	}
 }		
 
