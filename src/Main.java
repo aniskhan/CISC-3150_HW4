@@ -65,7 +65,7 @@ public class Main {
 		for (int i = 0; i <= arrayCount-1; i++) {
 			subArrayLengths[i] = (my2DArray[i].length);
 		}
-		System.out.println(Arrays.toString(subArrayLengths));
+		//System.out.println(Arrays.toString(subArrayLengths));
 		
 		Map<Integer, Integer> subArrayLenFreq = new HashMap<Integer, Integer>();
 		for (Integer idx = 0; idx <= subArrayLengths.length-1; idx++) {
@@ -77,26 +77,38 @@ public class Main {
 				 subArrayLenFreq.put(key, (value+1));
 			 }
 		}
-		Double ctPossCombos = 1.0;
+		int ctPossCombos = 1;
 		for (Map.Entry<Integer, Integer> entry : subArrayLenFreq.entrySet()) {
 			Integer k = entry.getKey();
 			Integer v = entry.getValue();
-			ctPossCombos = ctPossCombos * Math.pow(k, v);
-			System.out.println(k.toString() + ":" + v.toString());
+			ctPossCombos = ctPossCombos * (int)Math.pow(k, v);
+			//System.out.println(k.toString() + ":" + v.toString());
 		}
-		System.out.println(ctPossCombos.toString());
+		System.out.println(ctPossCombos + " combinations:");
 		
-		Double counter = 1.0;
+		int counter = 1;
+		String combHolder[][]= new String [arrayCount][ctPossCombos];
 		for (int r = 0; r <= arrayCount-1; r++) {
 			while (counter <= ctPossCombos/subArrayLengths[r]) {
 				for(int k = 0; k <= subArrayLengths[r]-1; k++ ) {
-					System.out.print(my2DArray[r][k]);
+					combHolder[r][counter-1] = my2DArray[r][k];
+					//System.out.print(my2DArray[r][k]);
+					//System.out.print(combHolder[r][counter-1]);
 					if (k == subArrayLengths[r]-1) {
 						counter++;
 					}
 				}
 			}
-			counter=1.0;
+			counter=1;
+			System.out.println(Arrays.toString(combHolder[r]));
+		}
+		System.out.println();
+		//pretty print
+		for(int k = 0; k <= ctPossCombos-1; k++) {
+			for(int r = 0; r <= arrayCount-1; r++) {
+				System.out.print(combHolder[r][k]);
+			}
+			System.out.println();
 		}
 	}
 }		
