@@ -84,16 +84,19 @@ public class Main {
 			ctPossCombos = ctPossCombos * Math.pow(k, v);
 			System.out.println(k.toString() + ":" + v.toString());
 		}
-		
 		System.out.println(ctPossCombos.toString());
-	
-		for (int i = 0; i <= arrayCount-1; i++) {
-			for(int k = 0; k <= my2DArray[i].length-1; k++) {
-				for(int r = 1; r <= (ctPossCombos/my2DArray[i].length); r++) {
-					System.out.print(my2DArray[i][k]);	
+		
+		Double counter = 1.0;
+		for (int r = 0; r <= arrayCount-1; r++) {
+			while (counter <= ctPossCombos/subArrayLengths[r]) {
+				for(int k = 0; k <= subArrayLengths[r]-1; k++ ) {
+					System.out.print(my2DArray[r][k]);
+					if (k == subArrayLengths[r]-1) {
+						counter++;
+					}
 				}
 			}
-			subArrayLengths[i] = (my2DArray[i].length);
+			counter=1.0;
 		}
 	}
 }		
@@ -113,14 +116,4 @@ while(++i<1<<n)
 
 
 
-/*int idx = 0;
-//System.out.print(Arrays.toString(counterArray));
-while (++idx <= arrayCount-1) {
-	if (counterArray[idx] <= subArrayMaxIndex[idx]) {
-		counterArray[idx] = ++counterArray[idx];
-		System.out.print(Arrays.toString(counterArray));
-	}else {
-		idx=0;
-	}
-	
-}*/
+
