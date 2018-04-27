@@ -1,3 +1,8 @@
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+
 /*
 Write a program that given a two dimensional array of characters prints 
 out the combination of every letter with every other letter. For eg, if 
@@ -16,7 +21,7 @@ bde
 bdf
 
 NOTE: 
-1) Your program should be able to handly ANY two dimensional character 
+1) Your program should be able to handle ANY two dimensional character 
 array.
 
 2) Get the 2D array at runtime. Either from the user or a file. To make 
@@ -30,7 +35,7 @@ e f	//values of arr[1]
 3	//length of your arr[2]
 g h i	//values of arr[2]
 
-The comments are there just to explain what each line means. Don't put 
+The comments are there just to explain what each line means. Don"t put 
 them in your data file.  This format will help you create your jagged 
 arrays because it tells you the sizes of each one of them.
 
@@ -39,33 +44,74 @@ arrays because it tells you the sizes of each one of them.
 
 Fun fact! This was a real interview question.*/
 
+/*
 
+NOTES
+
+If I know the total number of combinations possible, I also know the number of
+times each char(typed as String) will appear, once all combinations are printed
+*/
 
 public class Main {
    
 	public static void main(String[] args) {
-		char[][] my2DArray = {{'a','b','h'},{'c','d'},{'e','f','g'}};
-		int arrayCount = my2DArray.length;
-		int maxArrayLength =0;
+
+		String[][] my2DArray = {{"a","b"},{"d","e"},{"g"}};
+		Integer arrayCount = my2DArray.length;
+		Integer subArrayLengths[] = new Integer [arrayCount];
+		Integer counterArray[] = new Integer [arrayCount];
+		Arrays.fill(counterArray, 0);
+		//store subArray lengths
 		for (int i = 0; i <= arrayCount-1; i++) {
-			if (my2DArray[i].length > maxArrayLength) {
-				maxArrayLength = my2DArray[i].length;
-			}
+			subArrayLengths[i] = (my2DArray[i].length);
 		}
-		//System.out.println("Count of Arrays: "+ arrayCount);
-		//System.out.println("Max Array Length: "+ maxArrayLength);
+		System.out.println(Arrays.toString(subArrayLengths));
 		
-		for (int r = 0; r <= arrayCount-1; r++) {
-			for (int k = 0; k <= maxArrayLength-1; k++) {
-				if (k <= my2DArray[k].length) { //need to store and check len
-					System.out.print(my2DArray[k][r]);
-				}
-			}
-			System.out.println("");
-		}		
-
+		Map<Integer, Integer> subArrayLenFreq = new HashMap<Integer, Integer>();
+		for (Integer idx = 0; idx <= subArrayLengths.length-1; idx++) {
+			 Integer key = subArrayLengths[idx];
+			 Integer value = subArrayLenFreq.get(key);
+			 if (value == null) {
+			     value = subArrayLenFreq.put(key, 1);
+			 }else {
+				 subArrayLenFreq.put(key, (value+1));
+			 }
+		}
+		Double ctPossCombos = 1.0;
+		for (Map.Entry<Integer, Integer> entry : subArrayLenFreq.entrySet()) {
+			Integer k = entry.getKey();
+			Integer v = entry.getValue();
+			ctPossCombos = ctPossCombos * Math.pow(k, v);
+			System.out.println(k.toString() + ":" + v.toString());
+		}
+		
+		System.out.println(ctPossCombos.toString());
 	}
+}		
 
-}
 
-/// YOU NEED TO BUILD A TREE AND WALK IT...
+/*		String[] a = {"2","a","b","h"};
+int n=a.length-1,k=Integer.parseInt(a[0].toString()),i=0,j;
+while(++i<1<<n)
+    if(Integer.bitCount(i)==k){
+        String s="";
+        for(j=0;j<n;)
+            if((i&1<<j++)!=0)
+                s+=a[j];
+        System.out.println(s);
+    }*/
+
+
+
+
+/*int idx = 0;
+//System.out.print(Arrays.toString(counterArray));
+while (++idx <= arrayCount-1) {
+	if (counterArray[idx] <= subArrayMaxIndex[idx]) {
+		counterArray[idx] = ++counterArray[idx];
+		System.out.print(Arrays.toString(counterArray));
+	}else {
+		idx=0;
+	}
+	
+}*/
