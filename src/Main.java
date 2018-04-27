@@ -56,7 +56,7 @@ public class Main {
    
 	public static void main(String[] args) {
 
-		String[][] my2DArray = {{"a","b"},{"d","e"},{"g"}};
+		String[][] my2DArray = {{"a"},{"b","c"},{"d"},{"e","f","g"}};
 		Integer arrayCount = my2DArray.length;
 		Integer subArrayLengths[] = new Integer [arrayCount];
 		Integer counterArray[] = new Integer [arrayCount];
@@ -88,7 +88,7 @@ public class Main {
 		System.out.println(ctPossCombos.toString());
 	
 		for (int i = 0; i <= arrayCount-1; i++) {
-			for(int k = 0; k <= my2DArray[i].length; k++) {
+			for(int k = 0; k <= my2DArray[i].length-1; k++) {
 				for(int r = 1; r <= (ctPossCombos/my2DArray[i].length); r++) {
 					System.out.print(my2DArray[i][k]);	
 				}
