@@ -57,9 +57,7 @@ has 2 array with len 1
 has 1 array with len 2
 has 1 array with len 3
 
-Total combinations = 1^2 * 2^1 * 3^1 = 6
-
-or 1 * 2 * 1 * 3
+Total combinations = 1 * 2 * 1 * 3 = 6
 
 In full combo set I will see "a" 6x, "b"/"c" 3x, "e"/"f"/"g" 2x 
 (totalCombos / array len)
@@ -69,8 +67,14 @@ bcbcbc
 dddddd
 efgefg
 
-This can now be manipulated to print to spec.
+need an array counter....kinda like a clock
 
+0000
+0001
+0002
+0100
+0101
+0102
 
 */
 
