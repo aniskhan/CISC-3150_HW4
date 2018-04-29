@@ -46,10 +46,10 @@ Fun fact! This was a real interview question.*/
 
 /*
 
-NOTES
+MY APPROACH
 
 If I know the total number of combinations possible, I also know the number of
-times each char(typed as String) will appear in the full set of combinations
+times each char will appear in the full set of combinations
 
 Example {{"a"},{"b","c"},{"d"},{"e","f","g"}};
 
@@ -59,7 +59,10 @@ has 1 array with len 3
 
 Total combinations = 1^2 * 2^1 * 3^1 = 6
 
-In full combo set I will see "a"/"d" (each) 6x, "b"/"c" 3x, "e"/"f"/"g" 2x
+or 1 * 2 * 1 * 3
+
+In full combo set I will see "a" 6x, "b"/"c" 3x, "e"/"f"/"g" 2x 
+(totalCombos / array len)
 
 aaaaaa
 bcbcbc
@@ -75,13 +78,13 @@ public class Main {
    
 	public static void main(String[] args) {
 
-		String[][] my2DArray = {{"a"},{"b","c"},{"d"},{"e","f","g"}};
-		Integer arrayCount = my2DArray.length;
-		Integer subArrayLengths[] = new Integer [arrayCount];
-		Integer counterArray[] = new Integer [arrayCount];
+		String[][] my2DArray = {{"a","b"},{"c","d"},{"e","f"}};
+		Integer subArrayCount = my2DArray.length;
+		Integer subArrayLengths[] = new Integer [subArrayCount];
+		Integer counterArray[] = new Integer [subArrayCount];
 		Arrays.fill(counterArray, 0);
 		//store subArray lengths
-		for (int i = 0; i <= arrayCount-1; i++) {
+		for (int i = 0; i <= subArrayCount-1; i++) {
 			subArrayLengths[i] = (my2DArray[i].length);
 		}
 		//System.out.println(Arrays.toString(subArrayLengths));
@@ -106,8 +109,8 @@ public class Main {
 		System.out.println(ctPossCombos + " combinations:");
 		
 		int counter = 1;
-		String combHolder[][]= new String [arrayCount][ctPossCombos];
-		for (int r = 0; r <= arrayCount-1; r++) {
+		String combHolder[][]= new String [subArrayCount][ctPossCombos];
+		for (int r = 0; r <= subArrayCount-1; r++) {
 			String s = "";
 			while (counter <= ctPossCombos/subArrayLengths[r]) {
 				for(int k = 0; k <= subArrayLengths[r]-1; k++ ) {
@@ -121,11 +124,11 @@ public class Main {
 			}
 			counter=1;
 			combHolder[r] = s.split("(?!^)");
-			//System.out.println(s);
+			System.out.println(s);
 		}
 		//pretty print
 		for(int k = 0; k <= ctPossCombos-1; k++) {
-			for(int r = 0; r <= arrayCount-1; r++) {
+			for(int r = 0; r <= subArrayCount-1; r++) {
 				System.out.print(combHolder[r][k]);
 			}
 			System.out.println();
@@ -135,6 +138,8 @@ public class Main {
 
 
 
-
+abababab 01010101
+ccccdddd 00001111
+eeffeeff 00110011
 
 
