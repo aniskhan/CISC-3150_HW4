@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -88,17 +90,43 @@ public class Main {
 		Integer counterArray[] = new Integer [subArrayCount];
 		Arrays.fill(counterArray, 0);
 		int ctPossCombos = 1;
+		StringBuilder sb;
 		//store subArray lengths
 		for (int i = 0; i <= subArrayCount-1; i++) {
 			subArrayLengths[i] = (my2DArray[i].length);
 			ctPossCombos = ctPossCombos * subArrayLengths[i] ;
 		}
-		//System.out.println(Arrays.toString(subArrayLengths));
 		System.out.println(ctPossCombos + " combinations:");
 		
+		//System.out.println(Arrays.toString(counterArray));
+		for (int comboCounter = ctPossCombos; comboCounter > 0; --comboCounter) {
+			sb = new StringBuilder();
+			for (int outerIdx = 0; outerIdx < subArrayCount; ++outerIdx){
+				sb.append(my2DArray[outerIdx][counterArray[outerIdx]]);
+				for(int innerIdx = 0; innerIdx <= subArrayLengths[outerIdx]-1;
+					innerIdx ++) {
+					counterArray[outerIdx] = innerIdx;
+					
+					if(innerIdx == subArrayLengths[outerIdx]-1) {
+						//counterArray[outerIdx] = 0;
+						break;
+					}
+					System.out.println(Arrays.toString(counterArray));
+				}
+			}
+		}	
+		//System.out.println(Arrays.toString(subArrayLengths));
+
+		//List<String> combinationList = new ArrayList<String>(ctPossCombos);
+/*		for (int counter = ctPossCombos; counter > 0; counter--) {
+			sb = new StringBuilder();
+			for (int i = 0; i <= subArrayCount-1; i++) {
+				sb.append(my2DArray[i][counterArray[i]]);
+				//System.out.println(my2DArray[i][subArrayLengths[i]-1]);
+			}
+			System.out.println(sb);
+		}*/
 		
 	}
 }		
-
-
 
