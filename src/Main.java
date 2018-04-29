@@ -65,11 +65,22 @@ In full combo set I will see "a" 6x, "b"/"c" 3x, "e"/"f"/"g" 2x
 (totalCombos / array len)
 
 aaaaaa
-bcbcbc
+bbbccc
 dddddd
 efgefg
 
-need an array counter....kinda like a clock
+translates / transposes to: 
+abde
+abdf
+abdg
+acde
+acdf
+acdg
+
+
+need an array counter....kinda like a clock:
+clock needs to increment least significant index, roll over indexes with higher
+significance (if they have potential to roll over)
 
 0000
 0001
@@ -84,7 +95,7 @@ public class Main {
    
 	public static void main(String[] args) {
 
-		String[][] my2DArray = {{"a","b"},{"c","d"},{"e","f"}};
+		String[][] my2DArray = {{"a","b"},{"c","d","g"},{"e","f"},{"h"}};
 		Integer subArrayCount = my2DArray.length;
 		Integer subArrayLengths[] = new Integer [subArrayCount];
 		Integer counterArray[] = new Integer [subArrayCount];
@@ -98,34 +109,24 @@ public class Main {
 		}
 		System.out.println(ctPossCombos + " combinations:");
 		
-		//System.out.println(Arrays.toString(counterArray));
-		for (int comboCounter = ctPossCombos; comboCounter > 0; --comboCounter) {
+		for (int comboCounter = ctPossCombos; comboCounter > 0; --comboCounter){
 			sb = new StringBuilder();
 			for (int outerIdx = 0; outerIdx < subArrayCount; ++outerIdx){
 				sb.append(my2DArray[outerIdx][counterArray[outerIdx]]);
-				for(int innerIdx = 0; innerIdx <= subArrayLengths[outerIdx]-1;
-					innerIdx ++) {
-					counterArray[outerIdx] = innerIdx;
-					
-					if(innerIdx == subArrayLengths[outerIdx]-1) {
-						//counterArray[outerIdx] = 0;
-						break;
-					}
-					System.out.println(Arrays.toString(counterArray));
-				}
-			}
-		}	
-		//System.out.println(Arrays.toString(subArrayLengths));
-
-		//List<String> combinationList = new ArrayList<String>(ctPossCombos);
-/*		for (int counter = ctPossCombos; counter > 0; counter--) {
-			sb = new StringBuilder();
-			for (int i = 0; i <= subArrayCount-1; i++) {
-				sb.append(my2DArray[i][counterArray[i]]);
-				//System.out.println(my2DArray[i][subArrayLengths[i]-1]);
 			}
 			System.out.println(sb);
-		}*/
+			//System.out.println(Arrays.toString(counterArray));
+			// generate next combo index
+			for (int innerIdx = subArrayCount-1; innerIdx >=0; --innerIdx) {
+				if(counterArray[innerIdx]+1 < subArrayLengths[innerIdx]) {
+					++counterArray[innerIdx];
+					break; //print new combo
+				}
+				//if inner index at this outer index is maxed, zero out
+				counterArray[innerIdx]=0;
+			}
+			
+		}	
 		
 	}
 }		
